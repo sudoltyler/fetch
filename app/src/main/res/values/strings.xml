@@ -4,4 +4,5 @@
     <string name="details_title">Details</string>
     <string name="start_screen">Start</string>
     <string name="details_screen">Details</string>
+    <string name="fetch_button">Fetch Data</string>
 </resources>
