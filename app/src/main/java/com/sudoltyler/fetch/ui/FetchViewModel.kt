@@ -1,6 +1,7 @@
 package com.sudoltyler.fetch.ui
 
 import androidx.lifecycle.ViewModel
+import com.sudoltyler.fetch.data.FetchUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

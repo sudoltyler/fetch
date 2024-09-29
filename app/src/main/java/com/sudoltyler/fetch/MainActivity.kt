@@ -9,7 +9,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.sudoltyler.fetch.ui.FetchApp
 import com.sudoltyler.fetch.ui.theme.FetchTheme
 
 class MainActivity : ComponentActivity() {
