@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">fetch</string>
+    <string name="main_title">Fetch app</string>
+    <string name="details_title">Details</string>
 </resources>
