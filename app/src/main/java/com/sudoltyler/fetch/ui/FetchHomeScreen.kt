@@ -26,18 +26,13 @@ fun FetchHomeScreen(
     fetchUiState: FetchUiState,
     modifier: Modifier = Modifier
 ) {
-    if (fetchUiState.isShowingHomepage) {
-        FetchAppContent(
-            modifier = modifier
-        )
-    } else {
-        // details screen
-
-    }
+    FetchHomeContent(
+        modifier = modifier
+    )
 }
 
 @Composable
-fun FetchAppContent(
+fun FetchHomeContent(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -61,6 +56,6 @@ fun FetchAppContent(
 @Composable
 fun FetchHomePreview() {
     FetchTheme {
-        FetchAppContent()
+        FetchHomeContent()
     }
 }

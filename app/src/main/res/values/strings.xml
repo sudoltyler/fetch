@@ -2,4 +2,6 @@
     <string name="app_name">fetch</string>
     <string name="main_title">Fetch app</string>
     <string name="details_title">Details</string>
+    <string name="start_screen">Start</string>
+    <string name="details_screen">Details</string>
 </resources>

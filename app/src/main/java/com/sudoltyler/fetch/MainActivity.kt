@@ -17,9 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FetchTheme {
-                Surface {
-                    FetchApp()
-                }
+                FetchApp()
             }
         }
     }

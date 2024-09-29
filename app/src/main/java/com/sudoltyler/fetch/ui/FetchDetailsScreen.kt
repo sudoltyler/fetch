@@ -14,11 +14,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.sudoltyler.fetch.R
+import com.sudoltyler.fetch.data.FetchUiState
+import com.sudoltyler.fetch.ui.theme.FetchTheme
 
 @Composable
 fun FetchDetailsScreen(
+    fetchUiState: FetchUiState,
+    modifier: Modifier = Modifier
+) {
+    FetchDetailsContent(modifier = modifier)
+}
+
+@Composable
+fun FetchDetailsContent(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -35,5 +46,13 @@ fun FetchDetailsScreen(
             text = stringResource(R.string.details_title),
             style = typography.titleLarge
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FetchDetailsPreview() {
+    FetchTheme {
+        FetchDetailsContent()
     }
 }
