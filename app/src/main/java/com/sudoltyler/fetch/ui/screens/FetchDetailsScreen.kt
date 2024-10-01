@@ -1,4 +1,4 @@
-package com.sudoltyler.fetch.ui
+package com.sudoltyler.fetch.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

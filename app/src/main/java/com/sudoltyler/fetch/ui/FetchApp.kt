@@ -1,4 +1,4 @@
-package com.sudoltyler.fetch
+package com.sudoltyler.fetch.ui
 
 import androidx.annotation.StringRes
 import androidx.compose.material3.Surface
@@ -12,9 +12,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.sudoltyler.fetch.ui.FetchDetailsScreen
-import com.sudoltyler.fetch.ui.FetchHomeScreen
-import com.sudoltyler.fetch.ui.FetchViewModel
+import com.sudoltyler.fetch.R
+import com.sudoltyler.fetch.ui.screens.FetchDetailsScreen
+import com.sudoltyler.fetch.ui.screens.FetchHomeScreen
+import com.sudoltyler.fetch.ui.screens.FetchViewModel
 
 enum class FetchScreen(@StringRes val title: Int) {
     Start(title = R.string.start_screen),

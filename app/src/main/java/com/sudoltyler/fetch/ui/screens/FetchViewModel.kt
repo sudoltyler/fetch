@@ -1,4 +1,4 @@
-package com.sudoltyler.fetch.ui
+package com.sudoltyler.fetch.ui.screens
 
 import androidx.lifecycle.ViewModel
 import com.sudoltyler.fetch.data.FetchUiState
