@@ -49,7 +49,6 @@ fun FetchApp(
                     onFetchButtonClicked = {
                         navController.navigate(FetchScreen.Details.name)
                     },
-                    fetchUiState = fetchUiState,
                     modifier = modifier
                 )
             }

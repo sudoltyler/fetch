@@ -19,7 +19,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface FetchUiState {
-    data class Success(val photos: String) : FetchUiState
+    data class Success(val data: String) : FetchUiState
     object Error : FetchUiState
     object Loading : FetchUiState
 }
