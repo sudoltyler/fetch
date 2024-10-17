@@ -26,6 +26,7 @@ import com.sudoltyler.fetch.ui.theme.FetchTheme
 @Composable
 fun FetchHomeScreen(
     modifier: Modifier = Modifier,
+    fetchUiState: FetchUiState,
     onFetchButtonClicked: () -> Unit
 ) {
     Column(
@@ -52,12 +53,23 @@ fun FetchHomeScreen(
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun FetchHomePreview() {
-    FetchTheme {
-        FetchHomeScreen(
-            onFetchButtonClicked = {}
+fun FetchDetailsContent(
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .verticalScroll(rememberScrollState())
+            .safeDrawingPadding()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(R.string.details_title),
+            style = typography.titleLarge
         )
     }
 }

@@ -34,7 +34,10 @@ fun FetchApp(
     )
 
     Surface {
-        val fetchUiState = viewModel.uiState.collectAsState().value
+        val fetchViewModel: FetchViewModel =
+            viewModel(factory = FetchViewModel.Factory)
+
+        val fetchUiState = fetchViewModel.fetchUiState
 
         NavHost(
             navController = navController,
@@ -46,6 +49,7 @@ fun FetchApp(
                     onFetchButtonClicked = {
                         navController.navigate(FetchScreen.Details.name)
                     },
+                    fetchUiState = fetchUiState,
                     modifier = modifier
                 )
             }
