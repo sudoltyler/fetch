@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
@@ -26,28 +27,37 @@ import com.sudoltyler.fetch.ui.theme.FetchTheme
 @Composable
 fun FetchHomeScreen(
     modifier: Modifier = Modifier,
+    fetchUiState: FetchUiState,
     onFetchButtonClicked: () -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .verticalScroll(rememberScrollState())
-            .safeDrawingPadding()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = stringResource(R.string.main_title),
-            style = typography.titleLarge
+//    Column(
+////        modifier = Modifier
+////            .fillMaxSize()
+////            .statusBarsPadding()
+////            .verticalScroll(rememberScrollState())
+////            .safeDrawingPadding()
+////            .padding(16.dp),
+////        verticalArrangement = Arrangement.Center,
+////        horizontalAlignment = Alignment.CenterHorizontally
+////    ) {
+////        Text(
+////            text = stringResource(R.string.main_title),
+////            style = typography.titleLarge
+////        )
+////        Spacer(modifier = Modifier.height(16.dp))
+////        Button(
+////            onClick = onFetchButtonClicked,
+////            modifier = modifier
+////        ) {
+////            Text(stringResource(R.string.fetch_button))
+////        }
+////    }
+
+    when (fetchUiState) {
+        is FetchUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
+        is FetchUiState.Success -> ResultScreen(
+            fetchUiState.data, modifier = modifier.fillMaxWidth()
         )
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(
-            onClick = onFetchButtonClicked,
-            modifier = modifier
-        ) {
-            Text(stringResource(R.string.fetch_button))
-        }
+        is FetchUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
 }

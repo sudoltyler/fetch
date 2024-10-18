@@ -3,7 +3,6 @@ package com.sudoltyler.fetch.ui
 import androidx.annotation.StringRes
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -45,6 +44,7 @@ fun FetchApp(
         ) {
             composable(route = FetchScreen.Start.name) {
                 FetchHomeScreen(
+                    fetchUiState = fetchUiState,
                     onFetchButtonClicked = {
                         navController.navigate(FetchScreen.Details.name)
                     },
