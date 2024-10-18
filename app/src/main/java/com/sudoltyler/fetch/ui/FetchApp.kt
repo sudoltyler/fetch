@@ -25,7 +25,6 @@ enum class FetchScreen(@StringRes val title: Int) {
 @Composable
 fun FetchApp(
     modifier: Modifier = Modifier,
-    viewModel: FetchViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
