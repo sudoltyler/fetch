@@ -35,12 +35,14 @@ class FetchViewModel(private val fetchRepository: FetchRepository) : ViewModel()
         viewModelScope.launch {
             fetchUiState = FetchUiState.Loading
             fetchUiState = try {
+                // Retreive the list from the repository. perform filtering and sorting
                 val listResult = fetchRepository.getList()
                 val filteredList = listResult.filter {it.name != "" && it.name != null}
                 val sortedList =
                     filteredList.sortedWith(compareBy<FetchData> {it.listId}
                         .thenBy { it.name?.drop(5)?.toInt() })
                 val resultByListId = sortedList.groupBy { it.listId }
+
                 FetchUiState.Success(resultByListId)
             } catch (e: IOException) {
                 FetchUiState.Error
