@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class FetchData (
-    val id: String, val listId: String, val name: String
+    val id: Long, val listId: Long, val name: String? = null
 )
