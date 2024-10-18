@@ -17,7 +17,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface FetchUiState {
-    data class Success(val data: List<FetchData>) : FetchUiState
+    data class Success(val data: Map<Long, List<FetchData>>) : FetchUiState
     data object Error : FetchUiState
     data object Loading : FetchUiState
 }
@@ -36,7 +36,12 @@ class FetchViewModel(private val fetchRepository: FetchRepository) : ViewModel()
             fetchUiState = FetchUiState.Loading
             fetchUiState = try {
                 val listResult = fetchRepository.getList()
-                FetchUiState.Success(listResult)
+                val filteredList = listResult.filter {it.name != "" && it.name != null}
+                val sortedList =
+                    filteredList.sortedWith(compareBy<FetchData> {it.listId}
+                        .thenBy { it.name?.drop(5)?.toInt() })
+                val resultByListId = sortedList.groupBy { it.listId }
+                FetchUiState.Success(resultByListId)
             } catch (e: IOException) {
                 FetchUiState.Error
             } catch (e: HttpException) {

@@ -38,14 +38,19 @@ fun FetchDetailsScreen(
 }
 
 @Composable
-fun ResultScreen(data: List<FetchData>, modifier: Modifier = Modifier) {
+fun ResultScreen(data: Map<Long, List<FetchData>>, modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = modifier
+        modifier = modifier.padding(horizontal = 12.dp, vertical = 48.dp)
     ) {
         LazyColumn {
-            items(data) { entry ->
-                Text("Name: ${entry.name}, ID: ${entry.id}, ListID: ${entry.listId}")
+            item {
+                Text("Data from Fetch server\n")
+            }
+            items(data.toList()) { (k, v) ->
+                Text("Items with ListId $k:\n")
+                v.forEach { Text("${it.name}, ID: ${it.id}") }
+                Text("\n")
             }
         }
     }
