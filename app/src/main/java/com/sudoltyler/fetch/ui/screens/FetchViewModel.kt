@@ -11,17 +11,15 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.sudoltyler.fetch.FetchApplication
 import com.sudoltyler.fetch.data.FetchRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import com.sudoltyler.fetch.network.FetchData
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface FetchUiState {
-    data class Success(val data: String) : FetchUiState
-    object Error : FetchUiState
-    object Loading : FetchUiState
+    data class Success(val data: List<FetchData>) : FetchUiState
+    data object Error : FetchUiState
+    data object Loading : FetchUiState
 }
 
 // viewmodel interfaces with the ui state to update the ui elements, separating state from display
@@ -33,14 +31,12 @@ class FetchViewModel(private val fetchRepository: FetchRepository) : ViewModel()
         getData()
     }
 
-    fun getData() {
+    private fun getData() {
         viewModelScope.launch {
             fetchUiState = FetchUiState.Loading
             fetchUiState = try {
                 val listResult = fetchRepository.getList()
-                FetchUiState.Success(
-                    "Success: ${listResult.size} Data retrieved"
-                )
+                FetchUiState.Success(listResult)
             } catch (e: IOException) {
                 FetchUiState.Error
             } catch (e: HttpException) {

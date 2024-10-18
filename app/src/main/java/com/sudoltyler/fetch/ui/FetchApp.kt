@@ -44,7 +44,6 @@ fun FetchApp(
         ) {
             composable(route = FetchScreen.Start.name) {
                 FetchHomeScreen(
-                    fetchUiState = fetchUiState,
                     onFetchButtonClicked = {
                         navController.navigate(FetchScreen.Details.name)
                     },
